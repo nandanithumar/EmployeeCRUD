@@ -1,0 +1,83 @@
+<h3>Create Employee</h3>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <div [hidden]="submitted" style="width: 400px">
+      <form
+        [formGroup]="employeesaveform"
+        #saveemployee
+        (ngSubmit)="saveEmployee(saveEmployee)" >
+        <div class="form-group">
+          <label for="name">Employee Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            data-toggle="tooltip"
+            data-placement="right"
+            title="Enter Employee Name"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="Name?.touched && Name?.invalid"
+            style="margin-top: 5px">
+            
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Employee Password</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="password"
+            data-toggle="tooltip"
+            data-placement="right"
+            title="Enter Employee Email"/>
+          <div
+            class="alert alert-danger"
+            *ngIf="Password?.touched && Password?.invalid"
+            style="margin-top: 5px">
+            <span *ngIf="Password?.errors" >Employee Password is Required</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="moNumber">Employee Number</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="mo_number"
+              data-toggle="tooltip"
+              data-placement="right"
+              title="Enter Employee Mobile Number"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="MoNumber?.touched && MoNumber?.invalid"
+              style="margin-top: 5px"
+            >
+              <span *ngIf="MoNumber?.errors" >Employee Mobile is Required</span
+              >
+            </div>
+          </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+
+<div class="col-sm-4"></div>
+</div>
+<div class="col-sm-4"></div>  
+<div class="row">  
+  <div class="col-sm-4"></div>  
+  <div class="col-sm-4">  
+      <div [hidden]="!submitted">  
+         <h4>Employee Added SuccessFully!</h4>  
+         <button (click)="addEmployeeForm()" class='btn btn-primary'>Add More Student</button>  
+      </div>        
+  </div>  
+  <div class="col-sm-4"></div>  
+</div>  

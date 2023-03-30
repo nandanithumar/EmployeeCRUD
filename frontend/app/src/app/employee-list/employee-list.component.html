@@ -1,0 +1,89 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1 style="text-align: center">Employees</h1><br>
+    <div class="row"  [hidden]="!deleteMessage">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <div class="alert alert-info alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <strong>Employee Data Deleted</strong>
+        </div>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+  </div>
+
+  
+  <div class="panel-body">
+    <table class="table table-hover table-sm" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+      <thead class="thead-light">
+        <tr>
+          <th>Employee Id</th>
+          <th>Employee Name</th>
+          <th>Employee Password</th>
+          <th>Employee Mobile Number</th>
+          <th>Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of employees">
+          <td>{{e.id}}</td>
+          <td>{{e.name}}</td>
+          <td>{{e.password}}</td>
+          <td>{{e.mobileNo}}</td>
+          <td><button (click)="deleteEmployee(e.id)" class='btn btn-primary'>
+              <i class="fa fa-futboll-0">Delete</i>
+            </button>
+            <button (click)="updateEmployee(e.id)" class='btn btn-info' 
+            data-toggle="modal" data-target="#myModal"
+              type="button">Update
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <br>
+    </table>
+  </div>
+</div>
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="employeeupdateform" #updemp (ngSubmit)="updateEmp(updemp)">
+        <div class="modal-header">
+          <h4 class="modal-title" style="text-align: center">Update Employee</h4>
+        </div>
+
+        <div class="modal-body" *ngFor="let e of employeelist">
+          <div [hidden]="isupdated">
+            <input type="hidden" class="form-control" formControlName="id" [(ngModel)]="e.id">
+            <div class="form-group">
+              <label for="name">Employee Name</label>
+              <input type="text" class="form-control" formControlName="name" [(ngModel)]="e.name">
+            </div>
+
+
+            <div class="form-group">
+              <label for="name">Employee Password</label>
+              <input type="text" class="form-control" formControlName="password" [(ngModel)]="e.password">
+            </div>
+
+
+            <div class="form-group">
+              <label for="moNumber">Employee MobileNumber </label>
+              <input type="text" class="form-control" formControlName="moNumber" [(ngModel)]="e.mobileNo">
+            </div>
+          </div>
+          <div [hidden]="!isupdated">
+            <h4>Employee Detail Updated!</h4>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" [hidden]="isupdated">Update</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="changeisUpdate()">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
