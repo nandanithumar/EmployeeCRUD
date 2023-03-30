@@ -12,15 +12,8 @@ export class EmployeeService {
   constructor(private http:HttpClient) { }  
   
   getEmployeeList(): Observable<any> {
-    // const data =  this.http.get(`${this.baseUrl}`+'user'); 
    return this.http.get(`${this.baseUrl}`+'user'); 
-    // let list: any
-    // console.log(data)
-    // data.subscribe((d) => {
-    //   console.log(d)
-    //   list=d
-    // })
-    // return list
+    
   }  
   
   createEmployee(employee: Employee): Observable<Object> {  
@@ -43,7 +36,7 @@ export class EmployeeService {
   }  
   
   updateEmployee(id: number, value: any): Observable<Object> {  
-    return this.http.post(`${this.baseUrl}user/${id}`, value);  
+    return this.http.patch(`${this.baseUrl}user/${id}`, value);  
   }  
     
 }

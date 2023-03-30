@@ -8,12 +8,14 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { HttpClientModule } from '@angular/common/http';  
+import { LoginComponent } from './auth/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddEmployeeComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    LoginComponent
   ],
 
   
