@@ -9,13 +9,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { HttpClientModule } from '@angular/common/http';  
 import { LoginComponent } from './auth/login.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddEmployeeComponent,
     EmployeeListComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent
   ],
 
   

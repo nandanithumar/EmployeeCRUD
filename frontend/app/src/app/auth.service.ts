@@ -2,16 +2,22 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 import { tap, delay } from 'rxjs/operators';
+import { EmployeeService } from './employee.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+
+  constructor(private eService: EmployeeService){}
+  employees: any
   isUserLoggedIn: boolean = false;
 
   login(userName: string, password: string): Observable<any> {
-    console.log(userName);
-    console.log(password);
+    this.eService.getEmployeeList().subscribe(data => { 
+      this.employees = data
+    }
+      )
     this.isUserLoggedIn = userName == 'admin' && password == 'admin';
     localStorage.setItem(
       'isUserLoggedIn',
@@ -31,5 +37,4 @@ export class AuthService {
     localStorage.removeItem('isUserLoggedIn');
   }
 
-  constructor() {}
 }

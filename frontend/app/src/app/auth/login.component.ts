@@ -1,33 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-// import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
-// @Component({
-//   selector: 'app-login',
-//   templateUrl: './login.component.html',
-// })
-// export class LoginComponent implements OnInit {
-//     loginForm = new FormGroup(
-//       {
-//         username : new FormControl(),
-//         password : new FormControl()
-//       }
-//     )
-
-//   constructor(private fb: FormBuilder) {}
-
-//   ngOnInit() {
-//     this.loginForm = this.fb.group({
-//       username: ['', Validators.required],
-//       password: ['', Validators.required],
-//     });
-//   }
-
-//   onSubmit() {
-//     // Your login logic here
-//     console.log(this.loginForm.value);
-//   }
-// }
-
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl } from '@angular/forms';
@@ -47,8 +17,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.formData = new FormGroup({
-      userName: new FormControl('admin'),
-      password: new FormControl('admin'),
+      userName: new FormControl(),
+      password: new FormControl(),
     });
   }
 
